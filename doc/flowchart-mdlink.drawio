@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-03-17T15:16:42.255Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" etag="gu2yC5ONYxiGiOjODjba" version="14.4.8" type="github">
+<mxfile host="app.diagrams.net" modified="2021-03-17T16:16:11.495Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" etag="HYEDLDfWRvNAj4v94c1c" version="14.4.8" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="3816" dy="1976" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2508" dy="1188" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -75,6 +75,14 @@
         <mxCell id="8h300LbJHMT0a1MErR_V-57" value="FlowChart of library" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=22;fontColor=#0A54FF;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="-1145" y="-90" width="210" height="30" as="geometry" />
         </mxCell>
+        <mxCell id="XNVBb_R9EeFECo0VlNw_-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="8h300LbJHMT0a1MErR_V-66" target="8h300LbJHMT0a1MErR_V-107">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-190" y="385" />
+              <mxPoint x="-190" y="1530" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
         <mxCell id="8h300LbJHMT0a1MErR_V-66" value="No existe Ruta&amp;nbsp;" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;rounded=1;strokeWidth=2;arcSize=12;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="-960" y="345" width="120" height="80" as="geometry" />
         </mxCell>
@@ -95,6 +103,14 @@
         </mxCell>
         <mxCell id="8h300LbJHMT0a1MErR_V-70" value="validate: true" style="rhombus;whiteSpace=wrap;html=1;rounded=1;strokeWidth=2;arcSize=12;fillColor=#fff2cc;strokeColor=#d6b656;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="-790" y="755" width="105" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="XNVBb_R9EeFECo0VlNw_-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="8h300LbJHMT0a1MErR_V-72" target="8h300LbJHMT0a1MErR_V-107">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-120" y="545" />
+              <mxPoint x="-120" y="1530" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="8h300LbJHMT0a1MErR_V-72" value="This archive isn&#39;t a mackDown" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;rounded=1;strokeWidth=2;arcSize=12;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="-540" y="505" width="120" height="80" as="geometry" />
@@ -119,6 +135,14 @@
         </mxCell>
         <mxCell id="8h300LbJHMT0a1MErR_V-87" value="store list of archives in an array [path.md]" style="whiteSpace=wrap;html=1;rounded=1;strokeWidth=2;arcSize=12;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="-547.5" y="780" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="XNVBb_R9EeFECo0VlNw_-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="8h300LbJHMT0a1MErR_V-89" target="8h300LbJHMT0a1MErR_V-107">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-20" y="810" />
+              <mxPoint x="-20" y="1530" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="8h300LbJHMT0a1MErR_V-89" value="Return array of obj&lt;br&gt;[{href, text, file}]" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;rounded=1;strokeWidth=2;arcSize=12;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="-347.5" y="770" width="120" height="80" as="geometry" />
