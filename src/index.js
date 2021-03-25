@@ -1,9 +1,10 @@
-// module.exports = () => {
-//   // ...
-// };
-// const ruta = "./mdpr"
-// console.log(ruta);
-console.log('hola denisseeee momntalvo');
+import {getPathAbsolute} from "./api.js"
+let pathTest = "/mdpr/readme.md"
 
- var denisse;
-export default denisse
+
+
+export const mdLinks = (inputPath , option = {validate: false}) => {
+    return console.log(getPathAbsolute(inputPath));
+}
+
+mdLinks(pathTest)
