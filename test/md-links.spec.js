@@ -1,10 +1,10 @@
-const mdLinks = require('../');
+import data from "./data"
+import {getPathAbsoluteValidate} from '../src/api'
 
 
-describe('mdLinks', () => {
+describe("Obtain path absolute", () =>{
+  test("get path Absolute", ()=>{
+    expect(getPathAbsoluteValidate(data.path)).toBe(data.pathAbsolute)
+  })
 
-  it('should...', () => {
-    console.log('FIX ME!');
-  });
-
-});
+})
