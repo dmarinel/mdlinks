@@ -1,22 +1,26 @@
-import { getPathAbsoluteValidate, isPathDirectory, readPathFile } from "./api.js";
-let pathTest = "mdpr\\mdpr1\\readme3.md";
+import { getPathAbsoluteValidate, getArrayPathArchive, readPathFile } from "./api.js";
+
+let pathTest = "mdpr\\mdpr1\\readme2.md";
 
 export const mdLinks = (inputPath, option = { validate: false }) => {
+
     let pathAbsolute = getPathAbsoluteValidate(inputPath)
-    // console.log(pathAbsolute);
     
-    if (pathAbsolute === "This path isn't exist") {
-      console.log(`error`);
+
+    if (pathAbsolute === "error1") {
+      console.log(`This path does not exist`);
+      return "This path does not exist"
     }else{
-      let isDirectoryPath = isPathDirectory(pathAbsolute)
-      let getFile = readPathFile(isDirectoryPath)
-      console.log(getFile);
-      return isDirectoryPath
+      let arrayArchive = getArrayPathArchive(pathAbsolute)
+      if (arrayArchive === "error2") {
+        console.log("This archive isn't a markdown");
+        return "This archive isn't a markdown"
+      } else{
+        let getFile = readPathFile(arrayArchive)
+      }
     }
 
 
-    
-    
 
 };
 

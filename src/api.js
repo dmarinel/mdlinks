@@ -6,47 +6,57 @@ export const getPathAbsoluteValidate = (inputPath) => {
     if (inputPath[0] === "/") {
       let pathStr = inputPath.substr(1);
       let getPathAbsolute = resolve(pathStr);
+      console.log(getPathAbsolute);
       let pathAbsoluteValidate = existsSync(getPathAbsolute)
         ? getPath
-        : "This path isn't exist";
+        : "error1";
+        console.log(pathAbsoluteValidate);
       return pathAbsoluteValidate;
     }
   } else {
     let getPathAbsolute = resolve(inputPath);
     let pathAbsoluteValidate = existsSync(getPathAbsolute)
       ? getPathAbsolute
-      : "This path isn't exist";
+      : "error1";
+      console.log(pathAbsoluteValidate);
     return pathAbsoluteValidate;
   }
 };
 
-
-export const isPathDirectory = (pathAb) => {
-  let total = [];
-  let stats1 = statSync(pathAb);
-  let stats2 = stats1.isDirectory();
+export const getArrayPathArchive= (pathAbsolute) => {
+  console.log(`line27`);
+  console.log(pathAbsolute);
+  let arrayArchiveMd = [];
+  let stats = statSync(pathAbsolute);
+  let stats2 = stats.isDirectory();
+  console.log(stats2);
   if (stats2) {
-    let list = readdirSync(pathAb);
+    let list = readdirSync(pathAbsolute);
     // console.log(list);
-    // console.log(pathAb);
+    // console.log(pathAbsolute);
     list.forEach((file) => {
-      let path2 = resolve(`${pathAb}/${file}`);
+      let path2 = resolve(`${pathAbsolute}/${file}`);
       let stats = statSync(path2);
       if (stats && stats.isDirectory()) {
-        total = total.concat(isPathDirectory(path2));
+        arrayArchiveMd = arrayArchiveMd.concat(isPathDirectory(path2));
       } else {
-        if (path.extname(path2) === ".md") {
-          total.push(path2);
+        if (extname(path2) === ".md") {
+          arrayArchiveMd.push(path2);
         }
       }
     });
-    // console.log(total);
-    return total;
+    console.log("line45");
+    console.log(arrayArchiveMd);
+    return arrayArchiveMd;
   } else {
-    if (extname(pathAb)) {
-      total.push(pathAb);
-      // console.log(total);
-      return total;
+    if (extname(pathAbsolute) ===".md") {
+      arrayArchiveMd.push(pathAbsolute);
+      console.log("line50");
+      console.log(arrayArchiveMd);
+      return arrayArchiveMd;
+    }else{
+      // console.log("This archive isn't a markdown");
+      return "error2"
     }
   }
 };
