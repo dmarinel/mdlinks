@@ -1,5 +1,5 @@
 import data from "./data";
-import { getPathAbsoluteValidate } from "../src/api";
+import { getPathAbsoluteValidate, getArrayPathFileMd } from "../src/api";
 
 describe("GetPathAbsoluteValidate is a function", () => {
   it("should be a function", () => {
