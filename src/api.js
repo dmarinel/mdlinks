@@ -37,15 +37,16 @@ export const getArrayPathFileMd = (pathAbsolute) => {
     filesList.forEach((file) => {
       let pathFile = resolve(`${pathAbsolute}/${file}`);
       // console.log(pathFile);
-      if (statSync(pathFile) && statSync(pathFile).isDirectory()) {
-        arrayFileMd = arrayFileMd.concat(isPathDirectory(pathFile));
+      let stat = statSync(pathFile)
+      if (stat && stat.isDirectory()) {
+        arrayFileMd = arrayFileMd.concat(getArrayPathFileMd(pathFile));
       } else {
         if (extname(pathFile) === ".md") {
           arrayFileMd.push(pathFile);
         }
       }
     });
-  
+    console.log(arrayFileMd);
     return arrayFileMd;
   } else {
     // This is case is archive .md
@@ -64,3 +65,13 @@ export const readPathFile = (pathFile) => {
     readFileSync(element, { encoding: "utf-8", flag: "r" })
   );
 };
+
+export const getLinkFile = (arrayFiles) =>{
+  let searchLinksMd = /(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]+)+\/?/gm
+  const links = arrayFiles.map(e=>e.match(searchLinksMd))
+
+  console.log(`linea72`);
+  console.log(links);
+  // const array = []
+  
+}

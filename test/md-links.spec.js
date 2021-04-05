@@ -17,3 +17,9 @@ describe("GetPathAbsoluteValidate is a function", () => {
     expect(getPathAbsoluteValidate(data.path3)).toEqual(data.pathAbsolute3);
   });
 });
+
+describe("getArrayPathFile is a function",()=>{
+  it("should be a function", () => {
+    expect(typeof getArrayPathFileMd).toBe("function");
+  });
+})
