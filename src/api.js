@@ -46,12 +46,15 @@ export const getArrayPathFileMd = (pathAbsolute) => {
         }
       }
     });
+    console.log(`linea49`);
     console.log(arrayFileMd);
     return arrayFileMd;
   } else {
     // This is case is archive .md
     if (extname(pathAbsolute) === ".md") {
       arrayFileMd.push(pathAbsolute);
+      console.log(`line55`);
+      console.log(arrayFileMd);
       return arrayFileMd;
     } else {
       // error:"This archive isn't a markdown");
@@ -61,17 +64,42 @@ export const getArrayPathFileMd = (pathAbsolute) => {
 };
 
 export const readPathFile = (pathFile) => {
-  return pathFile.map((element) =>
-    readFileSync(element, { encoding: "utf-8", flag: "r" })
+  const array = []
+   const read = pathFile.map((element) =>{
+     let pathFile = element
+     let readFile = readFileSync(element, { encoding: "utf-8", flag: "r" })
+    
+     array.push({
+       file:pathFile,
+       read: readFile
+     })
+   }
   );
+  return array
 };
 
 export const getLinkFile = (arrayFiles) =>{
-  let searchLinksMd = /(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]+)+\/?/gm
-  const links = arrayFiles.map(e=>e.match(searchLinksMd))
 
-  console.log(`linea72`);
-  console.log(links);
-  // const array = []
+  const newArray = []
+  const links = arrayFiles.map(e=>{
+    let searchNameLinksMd = /\[([\w\s|.\d]+)\]\(((?:\/|https?:\/\/)[\w./?=#&_%~,.:-]+)\)/mg
+
+    const getLink = e.read.match(searchNameLinksMd)
+    const getLink1 = getLink.map(e=>{
+      return  e.split("(")[1].split(")")[0]
+    })
+    // console.log(`line92`);
+    //   console.log(getLink1);
+
+    const readFile = e.file
+    newArray.push({
+      file: readFile,
+      link: getLink1
+    })
+    // console.log(`line86`);
+    // console.log(getLink);
+  })
+  console.log(`line101`);
+    console.log(newArray);
   
 }

@@ -22,6 +22,8 @@ export const mdLinks = (inputPath, option = { validate: false }) => {
       return "This archive isn't a markdown";
     } else {
       const  getFile = readPathFile(arrayArchive);
+      // console.log(`line25index`);
+      // console.log(getFile);
       getLinkFile(getFile)
 
     }
