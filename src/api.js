@@ -2,9 +2,7 @@ import { resolve, extname, isAbsolute } from "path";
 import { readdirSync, existsSync, statSync, readFileSync } from "fs";
 
 export const getPathAbsoluteValidate = (inputPath) => {
-
   if (isAbsolute(inputPath)) {
-
     if (inputPath[0] === "/") {
       let pathStr = inputPath.substr(1);
       let getPathAbsolute = resolve(pathStr);
@@ -37,7 +35,7 @@ export const getArrayPathFileMd = (pathAbsolute) => {
     filesList.forEach((file) => {
       let pathFile = resolve(`${pathAbsolute}/${file}`);
       // console.log(pathFile);
-      let stat = statSync(pathFile)
+      let stat = statSync(pathFile);
       if (stat && stat.isDirectory()) {
         arrayFileMd = arrayFileMd.concat(getArrayPathFileMd(pathFile));
       } else {
@@ -46,15 +44,15 @@ export const getArrayPathFileMd = (pathAbsolute) => {
         }
       }
     });
-    console.log(`linea49`);
-    console.log(arrayFileMd);
+    // console.log(`linea49`);
+    // console.log(arrayFileMd);
     return arrayFileMd;
   } else {
     // This is case is archive .md
     if (extname(pathAbsolute) === ".md") {
       arrayFileMd.push(pathAbsolute);
-      console.log(`line55`);
-      console.log(arrayFileMd);
+      // console.log(`line55`);
+      // console.log(arrayFileMd);
       return arrayFileMd;
     } else {
       // error:"This archive isn't a markdown");
@@ -63,43 +61,50 @@ export const getArrayPathFileMd = (pathAbsolute) => {
   }
 };
 
-export const readPathFile = (pathFile) => {
-  const array = []
-   const read = pathFile.map((element) =>{
-     let pathFile = element
-     let readFile = readFileSync(element, { encoding: "utf-8", flag: "r" })
-    
-     array.push({
-       file:pathFile,
-       read: readFile
-     })
-   }
-  );
-  return array
+export const readPathFile = (arrayPathFile) => {
+  console.log('line65');
+  console.log(arrayPathFile);
+
+  const read = arrayPathFile.map((element) => {
+
+    let pathFile = element;
+    let readFile = readFileSync(element, { encoding: "utf-8", flag: "r" });
+    const obj = {
+      file: pathFile,
+      read: readFile,
+    }
+    // console.log(`line74`);
+    // console.log(obj);
+    return obj
+  });
+  // console.log(`linea78`);
+  // console.log(read);
+  return read;
 };
 
-export const getLinkFile = (arrayFiles) =>{
+export const getLinkFile = (arrayFiles) => {
+  console.log(`line81`);
+  console.log(arrayFiles);
 
-  const newArray = []
-  const links = arrayFiles.map(e=>{
-    let searchNameLinksMd = /\[([\w\s|.\d]+)\]\(((?:\/|https?:\/\/)[\w./?=#&_%~,.:-]+)\)/mg
+   arrayFiles.forEach((e) => {
+    const file = e.file
+    // console.log(e.file);
+    let searchNameLinksMd = /\[([\w\s|.\d]+)\]\(((?:\/|https?:\/\/)[\w./?=#&_%~,.:-]+)\)/gm;
 
-    const getLink = e.read.match(searchNameLinksMd)
-    const getLink1 = getLink.map(e=>{
-      return  e.split("(")[1].split(")")[0]
-    })
-    // console.log(`line92`);
-    //   console.log(getLink1);
+    const getTextLink = e.read.match(searchNameLinksMd);
+    const getLink1 = getTextLink.map((e) => {
+      const obj1 = {
+        url:e.split("(")[1].split(")")[0],
+        text: e.split("]")[0].split("[")[1],
+        file:file
+      }
+      // console.log(obj1);
+      return obj1
+    });
 
-    const readFile = e.file
-    newArray.push({
-      file: readFile,
-      link: getLink1
-    })
-    // console.log(`line86`);
-    // console.log(getLink);
-  })
-  console.log(`line101`);
-    console.log(newArray);
-  
-}
+    console.log(`line101`);
+    console.log(getLink1);
+    return getLink1
+  }
+  );
+};

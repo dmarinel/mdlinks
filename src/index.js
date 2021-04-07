@@ -5,7 +5,7 @@ import {
   getLinkFile
 } from "./api.js";
 
-let pathTest = "mdpr";
+let pathTest = "mdpr\\readme.md";
 // D:\\Aprendizaje continuo\\Laboratoria\\1. Proyectos\\mdlinks\\mdpr\\mdpr1
 
 export const mdLinks = (inputPath, option = { validate: false }) => {
