@@ -62,49 +62,68 @@ export const getArrayPathFileMd = (pathAbsolute) => {
 };
 
 export const readPathFile = (arrayPathFile) => {
-  console.log('line65');
-  console.log(arrayPathFile);
+  // console.log('line65');
+  // console.log(arrayPathFile);
 
-  const read = arrayPathFile.map((element) => {
-
-    let pathFile = element;
-    let readFile = readFileSync(element, { encoding: "utf-8", flag: "r" });
+  const readFile = arrayPathFile.map((path) => {
+    
+    let pathFileMd = path;
+    let readFileMd = readFileSync(path, { encoding: "utf-8", flag: "r" });
     const obj = {
-      file: pathFile,
-      read: readFile,
-    }
+      file: pathFileMd,
+      read: readFileMd,
+    };
     // console.log(`line74`);
     // console.log(obj);
-    return obj
+    return obj;
   });
   // console.log(`linea78`);
   // console.log(read);
-  return read;
+  return readFile;
 };
 
-export const getLinkFile = (arrayFiles) => {
-  console.log(`line81`);
-  console.log(arrayFiles);
+export const getLinkByFile = (arrayFiles) => {
+  
 
-   arrayFiles.forEach((e) => {
-    const file = e.file
+   const infoPath = arrayFiles.map((e) => {
+    const file = e.file;
     // console.log(e.file);
     let searchNameLinksMd = /\[([\w\s|.\d]+)\]\(((?:\/|https?:\/\/)[\w./?=#&_%~,.:-]+)\)/gm;
 
     const getTextLink = e.read.match(searchNameLinksMd);
     const getLink1 = getTextLink.map((e) => {
       const obj1 = {
-        url:e.split("(")[1].split(")")[0],
+        url: e.split("(")[1].split(")")[0],
         text: e.split("]")[0].split("[")[1],
-        file:file
-      }
+        file: file,
+      };
       // console.log(obj1);
-      return obj1
+      return obj1;
     });
 
-    console.log(`line101`);
-    console.log(getLink1);
-    return getLink1
-  }
-  );
+    // console.log(`line105`);
+    // console.log(getLink1);
+    return getLink1;
+  });
+  return infoPath.flat()
 };
+
+export const getStatusByHref = (infoPath) =>{
+   console.log(`line112`);
+   console.log(infoPath);
+  
+  
+}
+
+export const getOptionByValidate = (informationPath,statusHref, option) =>{
+  // console.log(`line112`);
+  // console.log(informationPath);
+  // console.log(option.validate)
+  if(option.validate === false){
+    console.log(`line123`);
+    console.log(informationPath)
+    return informationPath
+  }else{
+    console.log(`validate es true `);
+  }
+}

@@ -2,10 +2,12 @@ import {
   getPathAbsoluteValidate,
   getArrayPathFileMd,
   readPathFile,
-  getLinkFile
+  getLinkByFile,
+  getOptionByValidate,
+  getStatusByHref
 } from "./api.js";
 
-let pathTest = "mdpr\\readme.md";
+let pathTest = "mdpr\\mdpr1\\readme3.md";
 // D:\\Aprendizaje continuo\\Laboratoria\\1. Proyectos\\mdlinks\\mdpr\\mdpr1
 
 export const mdLinks = (inputPath, option = { validate: false }) => {
@@ -24,7 +26,9 @@ export const mdLinks = (inputPath, option = { validate: false }) => {
       const  getFile = readPathFile(arrayArchive);
       // console.log(`line25index`);
       // console.log(getFile);
-      getLinkFile(getFile)
+      const informationPathMd = getLinkByFile(getFile)
+      const statusHref = getStatusByHref(informationPathMd)
+      getOptionByValidate(informationPathMd, statusHref, option)
 
     }
   }
