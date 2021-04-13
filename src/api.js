@@ -1,5 +1,6 @@
 import { resolve, extname, isAbsolute } from "path";
 import { readdirSync, existsSync, statSync, readFileSync } from "fs";
+import fetch from "node-fetch";
 
 export const getPathAbsoluteValidate = (inputPath) => {
   if (isAbsolute(inputPath)) {
@@ -66,7 +67,6 @@ export const readPathFile = (arrayPathFile) => {
   // console.log(arrayPathFile);
 
   const readFile = arrayPathFile.map((path) => {
-    
     let pathFileMd = path;
     let readFileMd = readFileSync(path, { encoding: "utf-8", flag: "r" });
     const obj = {
@@ -83,9 +83,7 @@ export const readPathFile = (arrayPathFile) => {
 };
 
 export const getLinkByFile = (arrayFiles) => {
-  
-
-   const infoPath = arrayFiles.map((e) => {
+  const infoPath = arrayFiles.map((e) => {
     const file = e.file;
     // console.log(e.file);
     let searchNameLinksMd = /\[([\w\s|.\d]+)\]\(((?:\/|https?:\/\/)[\w./?=#&_%~,.:-]+)\)/gm;
@@ -93,7 +91,7 @@ export const getLinkByFile = (arrayFiles) => {
     const getTextLink = e.read.match(searchNameLinksMd);
     const getLink1 = getTextLink.map((e) => {
       const obj1 = {
-        url: e.split("(")[1].split(")")[0],
+        href: e.split("(")[1].split(")")[0],
         text: e.split("]")[0].split("[")[1],
         file: file,
       };
@@ -105,25 +103,47 @@ export const getLinkByFile = (arrayFiles) => {
     // console.log(getLink1);
     return getLink1;
   });
-  return infoPath.flat()
+  return infoPath.flat();
 };
 
-export const getStatusByHref = (infoPath) =>{
-   console.log(`line112`);
-   console.log(infoPath);
-  
-  
-}
+export const getStatusByHref = (array) => {
+  console.log(`line112`);
+  console.log(array);
 
-export const getOptionByValidate = (informationPath,statusHref, option) =>{
+
+  const data = array.map((e) =>fetch(e).then((response) => {
+      // console.log(response);
+
+      e.status = response.status;
+      e.statusText = response.status === 200 ? "ok" : "fail";
+      // console.log(`line120`);
+      // console.log(e);
+      return e
+    })
+    .catch(error =>{
+      console.log(error);
+    })
+  
+  );
+
+  console.log(`linea152`);
+  // console.log(data);
+  // console.log(Promise.all(data));
+
+  return Promise.all(data);
+};
+
+export const getOptionByValidate = (informationPath, option) => {
   // console.log(`line112`);
   // console.log(informationPath);
   // console.log(option.validate)
-  if(option.validate === false){
+  if (option.validate === false) {
     console.log(`line123`);
-    console.log(informationPath)
-    return informationPath
-  }else{
+    console.log(informationPath);
+    return informationPath;
+  } else {
     console.log(`validate es true `);
+
+    return getStatusByHref(informationPath)
   }
-}
+};

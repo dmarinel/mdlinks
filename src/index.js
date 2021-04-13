@@ -7,10 +7,10 @@ import {
   getStatusByHref
 } from "./api.js";
 
-let pathTest = "mdpr\\mdpr1\\readme3.md";
+let pathTest = "mdpr\\mdpr1";
 // D:\\Aprendizaje continuo\\Laboratoria\\1. Proyectos\\mdlinks\\mdpr\\mdpr1
 
-export const mdLinks = (inputPath, option = { validate: false }) => {
+export const mdLinks = (inputPath, option = { validate: true }) => {
   const pathAbsolute = getPathAbsoluteValidate(inputPath);
 
   if (pathAbsolute === "error1") {
@@ -23,13 +23,17 @@ export const mdLinks = (inputPath, option = { validate: false }) => {
       console.log("This archive isn't a markdown");
       return "This archive isn't a markdown";
     } else {
-      const  getFile = readPathFile(arrayArchive);
-      // console.log(`line25index`);
-      // console.log(getFile);
-      const informationPathMd = getLinkByFile(getFile)
-      const statusHref = getStatusByHref(informationPathMd)
-      getOptionByValidate(informationPathMd, statusHref, option)
+      
+      const informationPathMd = getLinkByFile(readPathFile(arrayArchive))
+      getOptionByValidate(informationPathMd, option).then((response) =>{
+        // console.log(`line33`);
+        console.log(response);
+        return response
 
+      }).catch(e=>{
+        console.error(e)
+      });
+      // getOptionByValidate(informationPathMd, option)
     }
   }
 };
