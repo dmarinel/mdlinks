@@ -11,7 +11,7 @@ export const getPathAbsoluteValidate = (inputPath) => {
       let pathAbsoluteValidate = existsSync(getPathAbsolute)
         ? getPathAbsolute
         : "error1";
-      console.log(pathAbsoluteValidate);
+      // console.log(pathAbsoluteValidate);
       return pathAbsoluteValidate;
     }
   } else {
@@ -25,6 +25,9 @@ export const getPathAbsoluteValidate = (inputPath) => {
 };
 
 export const getArrayPathFileMd = (pathAbsolute) => {
+  // console.log("line 29");
+  // console.log(pathAbsolute);
+
   let arrayFileMd = [];
   let isPathDirectory = statSync(pathAbsolute).isDirectory();
   // console.log(isPathDirectory);
@@ -45,7 +48,7 @@ export const getArrayPathFileMd = (pathAbsolute) => {
         }
       }
     });
-    // console.log(`linea49`);
+    // console.log(`linea52`);
     // console.log(arrayFileMd);
     return arrayFileMd;
   } else {
@@ -57,6 +60,7 @@ export const getArrayPathFileMd = (pathAbsolute) => {
       return arrayFileMd;
     } else {
       // error:"This archive isn't a markdown");
+      // console.log("error2");
       return "error2";
     }
   }
@@ -78,11 +82,14 @@ export const readPathFile = (arrayPathFile) => {
     return obj;
   });
   // console.log(`linea78`);
-  // console.log(read);
+  // console.log(readFile);
   return readFile;
 };
 
 export const getLinkByFile = (arrayFiles) => {
+  // console.log(`linea91`);
+  // console.log(arrayFiles);
+
   const infoPath = arrayFiles.map((e) => {
     const file = e.file;
     // console.log(e.file);
@@ -101,34 +108,30 @@ export const getLinkByFile = (arrayFiles) => {
 
     // console.log(`line105`);
     // console.log(getLink1);
+
     return getLink1;
   });
+  // console.log(`linea115`);
+  // console.log(infoPath.flat());
   return infoPath.flat();
 };
 
 export const getStatusByHref = (array) => {
-  console.log(`line112`);
-  console.log(array);
+  // console.log(`Api line122`);
+  // console.log(array);
 
+  const data = array.map((link) =>
+    fetch(link)
+      .then((response) => {
+        link.status = response.status;
+        link.statusText = response.status === 200 ? "ok" : "fail";
 
-  const data = array.map((e) =>fetch(e).then((response) => {
-      // console.log(response);
-
-      e.status = response.status;
-      e.statusText = response.status === 200 ? "ok" : "fail";
-      // console.log(`line120`);
-      // console.log(e);
-      return e
-    })
-    .catch(error =>{
-      console.log(error);
-    })
-  
+        return link;
+      })
+      .catch((error) => {
+        console.log(error);
+      })
   );
-
-  console.log(`linea152`);
-  // console.log(data);
-  // console.log(Promise.all(data));
 
   return Promise.all(data);
 };
@@ -138,12 +141,12 @@ export const getOptionByValidate = (informationPath, option) => {
   // console.log(informationPath);
   // console.log(option.validate)
   if (option.validate === false) {
-    console.log(`line123`);
-    console.log(informationPath);
-    return informationPath;
-  } else {
-    console.log(`validate es true `);
+    // console.log(`line123`);
+    // console.log(informationPath);
 
-    return getStatusByHref(informationPath)
+    return Promise.resolve(informationPath);
+  } else {
+    // console.log(`validate es true `);
+    return getStatusByHref(informationPath);
   }
 };

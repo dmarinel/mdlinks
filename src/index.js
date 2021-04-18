@@ -4,38 +4,42 @@ import {
   readPathFile,
   getLinkByFile,
   getOptionByValidate,
-  getStatusByHref
 } from "./api.js";
 
-let pathTest = "mdpr\\mdpr1";
+let pathTest = "/mdpr\\mdpr1\\readme3.md";
 // D:\\Aprendizaje continuo\\Laboratoria\\1. Proyectos\\mdlinks\\mdpr\\mdpr1
 
-export const mdLinks = (inputPath, option = { validate: true }) => {
-  const pathAbsolute = getPathAbsoluteValidate(inputPath);
+export const mdLinks = (inputPath, option = { validate: false }) => {
+  return new Promise((resolve, reject) => {
 
-  if (pathAbsolute === "error1") {
-    console.log(`This path does not exist`);
-    return "This path does not exist";
-  } else {
-    const arrayArchive = getArrayPathFileMd(pathAbsolute);
+    const pathAbsolute = getPathAbsoluteValidate(inputPath);
 
-    if (arrayArchive === "error2") {
-      console.log("This archive isn't a markdown");
-      return "This archive isn't a markdown";
+    if (pathAbsolute === "error1") {
+      console.log(`This path does not exist`);
+      reject (new Error("This path does not exist"));
     } else {
-      
-      const informationPathMd = getLinkByFile(readPathFile(arrayArchive))
-      getOptionByValidate(informationPathMd, option).then((response) =>{
-        // console.log(`line33`);
-        console.log(response);
-        return response
+      const arrayArchive = getArrayPathFileMd(pathAbsolute);
 
-      }).catch(e=>{
-        console.error(e)
-      });
-      // getOptionByValidate(informationPathMd, option)
+      if (arrayArchive === "error2") {
+        console.log("This archive isn't a markdown");
+        reject (new Error("This archive isn't a markdown"));
+      } else {
+        const informationPathMd = getLinkByFile(readPathFile(arrayArchive));
+        getOptionByValidate(informationPathMd, option)
+          .then((res) => {
+            // console.log(`line33`);
+            // console.log(response);
+            resolve(res)
+            
+          })
+          .catch((e) => {
+            console.error(e);
+          });
+      }
     }
-  }
+  });
 };
 
-mdLinks(pathTest);
+console.log(`Index-line42`)
+
+mdLinks(pathTest, { validate: true }).then(resolve=>resolve)
