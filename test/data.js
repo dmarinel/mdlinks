@@ -32,6 +32,8 @@ const data = {
         '[Markdown](https://es.wikipedia.org/wiki/Markdown).\r\n' +
         '\r\n' +
         '[Node.js](https://nodejs.org/).\r\n' +
+        '[Node.js](https://nodejs.org/).\r\n' +
+        '[Node.js](https://nodejs.org/).\r\n' +
         '[error](http://www.abab.com.pe/aldo-bruno).'
     }
   ],
@@ -47,11 +49,58 @@ const data = {
       file: 'D:\\Aprendizaje continuo\\Laboratoria\\1. Proyectos\\mdlinks\\mdpr\\mdpr1\\readme3.md'  
     },
     {
+      href: 'https://nodejs.org/',
+      text: 'Node.js',
+      file: 'D:\\Aprendizaje continuo\\Laboratoria\\1. Proyectos\\mdlinks\\mdpr\\mdpr1\\readme3.md'  
+    },
+    {
+      href: 'https://nodejs.org/',
+      text: 'Node.js',
+      file: 'D:\\Aprendizaje continuo\\Laboratoria\\1. Proyectos\\mdlinks\\mdpr\\mdpr1\\readme3.md'  
+    },
+    {
       href: 'http://www.abab.com.pe/aldo-bruno',
       text: 'error',
       file: 'D:\\Aprendizaje continuo\\Laboratoria\\1. Proyectos\\mdlinks\\mdpr\\mdpr1\\readme3.md'  
     }
   ],
+  arraStatusByHref: [
+    {
+      href: 'https://es.wikipedia.org/wiki/Markdown',
+      text: 'Markdown',
+      file: 'D:\\Aprendizaje continuo\\Laboratoria\\1. Proyectos\\mdlinks\\mdpr\\mdpr1\\readme3.md',
+      status: 200,
+      statusText: 'ok'
+    },
+    {
+      href: 'https://nodejs.org/',
+      text: 'Node.js',
+      file: 'D:\\Aprendizaje continuo\\Laboratoria\\1. Proyectos\\mdlinks\\mdpr\\mdpr1\\readme3.md',
+      status: 200,
+      statusText: 'ok'
+    },
+    {
+      href: 'https://nodejs.org/',
+      text: 'Node.js',
+      file: 'D:\\Aprendizaje continuo\\Laboratoria\\1. Proyectos\\mdlinks\\mdpr\\mdpr1\\readme3.md',
+      status: 200,
+      statusText: 'ok'
+    },
+    {
+      href: 'https://nodejs.org/',
+      text: 'Node.js',
+      file: 'D:\\Aprendizaje continuo\\Laboratoria\\1. Proyectos\\mdlinks\\mdpr\\mdpr1\\readme3.md',
+      status: 200,
+      statusText: 'ok'
+    },
+    {
+      href: 'http://www.abab.com.pe/aldo-bruno',
+      text: 'error',
+      file: 'D:\\Aprendizaje continuo\\Laboratoria\\1. Proyectos\\mdlinks\\mdpr\\mdpr1\\readme3.md',
+      status: 404,
+      statusText: 'fail'
+    }
+  ]
   
 };
 

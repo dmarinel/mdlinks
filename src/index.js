@@ -6,7 +6,9 @@ import {
   getOptionByValidate,
 } from "./api.js";
 
-let pathTest = "/mdpr\\mdpr1\\readme3.md";
+import {getReportMdlinks} from "./cliMethods.js"
+
+let pathTest = "./mdpr\\mdpr1\\readme3.md";
 // D:\\Aprendizaje continuo\\Laboratoria\\1. Proyectos\\mdlinks\\mdpr\\mdpr1
 
 export const mdLinks = (inputPath, option = { validate: false }) => {
@@ -28,7 +30,8 @@ export const mdLinks = (inputPath, option = { validate: false }) => {
         getOptionByValidate(informationPathMd, option)
           .then((res) => {
             // console.log(`line33`);
-            // console.log(response);
+            // console.log(res);
+            // getReportMdlinks(res)
             resolve(res)
             
           })
@@ -40,6 +43,8 @@ export const mdLinks = (inputPath, option = { validate: false }) => {
   });
 };
 
-console.log(`Index-line42`)
+// console.log(`Index-line42`)
 
-mdLinks(pathTest, { validate: true }).then(resolve=>resolve)
+mdLinks(pathTest, { validate: true }).then(resolve=> resolve
+  // console.log(resolve)
+  )

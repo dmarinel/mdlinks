@@ -121,18 +121,19 @@ export const getStatusByHref = (array) => {
   // console.log(array);
 
   const data = array.map((link) =>
-    fetch(link)
+    fetch(link.href)
       .then((response) => {
         link.status = response.status;
         link.statusText = response.status === 200 ? "ok" : "fail";
-
+        
         return link;
       })
       .catch((error) => {
         console.log(error);
       })
   );
-
+    
+    // console.log(data);
   return Promise.all(data);
 };
 

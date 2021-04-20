@@ -1,11 +1,14 @@
+
+
 import data from "./data";
 import {
   getPathAbsoluteValidate,
   getArrayPathFileMd,
   readPathFile,
-  getLinkByFile,
-  getStatusByHref
+  getLinkByFile
 } from "../src/api";
+
+
 
 describe("GetPathAbsoluteValidate is a function", () => {
   test("should be a function", () => {
@@ -60,12 +63,5 @@ describe("getLinkByFile is a function", () => {
   });
 });
 
-describe("getStatusByHref is a function", () => {
-  test("should be a function", () => {
-    expect(typeof getStatusByHref).toBe("function");
-  });
 
-  
 
-  
-});
