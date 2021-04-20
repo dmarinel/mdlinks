@@ -5,7 +5,8 @@ import {
   getPathAbsoluteValidate,
   getArrayPathFileMd,
   readPathFile,
-  getLinkByFile
+  getLinkByFile,
+  getOptionByValidate
 } from "../src/api";
 
 
@@ -61,6 +62,33 @@ describe("getLinkByFile is a function", () => {
   test("Read path of archive .md ", () => {
     expect(getLinkByFile(data.arrayObjRead)).toEqual(data.arrayObjByLink);
   });
+});
+
+describe("getLinkByFile is a function", () => {
+  test("should be a function", () => {
+    expect(typeof getLinkByFile).toBe("function");
+  });
+  test("Read path of archive .md ", () => {
+    expect(getLinkByFile(data.arrayObjRead)).toEqual(data.arrayObjByLink);
+  });
+});
+
+describe("getOptionByValidate is a function", () => {
+  test("should be a function", () => {
+    expect(typeof getOptionByValidate).toBe("function");
+  });
+  test("Obtain data when validate is false", () => {
+    getOptionByValidate(data.arrayObjByLink, false).then((res)=> {
+      expect(res).toEqual(data.arrayObjByLink)
+    })
+  });
+
+  test("Obtain data when validate is true", () => {
+    getOptionByValidate(data.arrayObjByLink, true).then((res)=> {
+      expect(res).toEqual(data.arraStatusByHref)
+    })
+  });
+
 });
 
 

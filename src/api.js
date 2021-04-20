@@ -138,8 +138,8 @@ export const getStatusByHref = (array) => {
 };
 
 export const getOptionByValidate = (informationPath, option) => {
-  // console.log(`line112`);
-  // console.log(informationPath);
+  console.log(`line112`);
+  console.log(informationPath);
   // console.log(option.validate)
   if (option.validate === false) {
     // console.log(`line123`);
